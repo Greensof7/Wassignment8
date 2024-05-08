@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4 id="time"></h4>
+    <script>
+        
+        var countDown =new Date("jan 1, 2037 04:12:07").getTime();
+        var update=setInterval(function(){
+        var today = new Date().getTime();
+        var diff = countDown - today;
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+         var hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+         var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+         var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+       
+         document.getElementById("time").innerHTML =
+         days + "-D: " + hrs + "-H: " + minutes + "-M: " + seconds + "-S ";
+         if (diff < 0) {
+            clearInterval(update);
+            document.getElementById("time").innerHTML = "Expired";
+         }
+      }, 1000);
+    </script>
+</body>
+</html>
